@@ -2,9 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     let artworkContainer = document.querySelector('#artwork-container');
-
-    //this function would take data from a fetch and the keyword the user typed in
    
+    //UPON LOAD
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=flowers`)
     .then(resp => resp.json())
     .then(data => {
@@ -14,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         displayArtwork(objectArray[randomID], "flowers");
     });
 
+
+    /////USED FOR LOADING ART
     function displayArtwork(artworkID, keyword) {
         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${artworkID}`)
         .then(resp => resp.json())
@@ -24,9 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buildArtwork(data, keyword) {
-        if (artworkContainer.firstChild) {
-            artworkContainer.removeChild(artworkContainer.firstChild);
-        }
+
         const fullWork = document.createElement('div');
         const thisIsYourWord = document.createElement('p');
         const title = document.createElement('h2');
@@ -34,14 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const medium = document.createElement('p');
         const picture = document.createElement('img');
 
-        let nameOrNo = "";
+        if (artworkContainer.firstChild) {
+            artworkContainer.removeChild(artworkContainer.firstChild);
+        }
 
-        if (data.artistDisplayName) {
-            nameOrNo = `By ${data.artistDisplayName}`;
-        }
-        else {
-            nameOrNo = "Unknown Artist";
-        }
+        let nameOrNo = "";
+        data.artistDisplayName ? nameOrNo = `By ${data.artistDisplayName}` : nameOrNo = "Unknown Artist";
         
         thisIsYourWord.innerHTML = `Here's a random artwork related to "${keyword}"!`;
         title.innerHTML = data.title;
@@ -58,12 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         artworkContainer.appendChild(fullWork);
     }
+    //////////////////////
 
 
  ///////////////EVENT LISTENER RELATED STUFF
 
     const searchByArtwork = document.querySelector('#search-by-artwork');
-    const chooseDepartment = document.querySelector('#choose-department');
+    // const chooseDepartment = document.querySelector('#choose-department');
 
     searchByArtwork.addEventListener('submit', titleSearch);
     console.log("Hi");

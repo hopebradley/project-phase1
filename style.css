@@ -1,0 +1,13 @@
+#project-body {
+    margin: auto;
+    width: 70%;
+}
+
+#title {
+    text-align: center;
+}
+
+.search-option {
+    float: left;
+    padding: 3%;
+}

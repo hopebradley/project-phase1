@@ -5,28 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtSearch</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div id="title">
-        <h1>ART SEARCH</h1>
-        <p>Type in a keyword to get an art piece related to it!</p>
+    <div id="project-body">
+        <div id="title">
+            <h1>ART SEARCH</h1>
+            <p>Type in a keyword to get an art piece related to it!</p>
+        </div>
+        
+        <div id="search-section">
+            <div class="search-option">
+                <h3>SEARCH BY KEYWORD</h3>
+                <form>
+                    <input type="text">
+                    <input type="submit">
+                </form> 
+            </div>
+            <div class="search-option">
+                <h3>CHOOSE A CATEGORY</h3>
+                <select id="choose-category">
+                    <option value="American Art"></option>
+                    <option value="Asian Art"></option>
+                    <option value="African Art"></option>
+                    <option value="Egyptian Art"></option>
+                    <option value="European Art"></option>
+                    <option value="Greek and Roman Art"></option>
+                    <option value="Islamic Art"></option>
+                    <option value="Medieval Art"></option>
+                    <option value="Modern Art"></option>
+                </select>
+            </div>
+        </div>
+
+        <div id="artwork-container"></div>
     </div>
-    
-    <div id="search-section">
-        <div class="search-option">
-
-        </div>
-
-        <div class="search-option">
-
-        </div>
-
-        <div class="search-option">
-
-        </div>
-    </div>
-
-    <div id="artwork-container"></div>
     
 </body>
 </html>

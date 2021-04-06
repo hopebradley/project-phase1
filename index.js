@@ -60,6 +60,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+ ///////////////EVENT LISTENER RELATED STUFF
+
+    const searchByArtwork = document.querySelector('#search-by-artwork');
+    const chooseDepartment = document.querySelector('#choose-department');
+
+    searchByArtwork.addEventListener('submit', titleSearch);
+    console.log("Hi");
+
+    function titleSearch(e) {
+        e.preventDefault();
+        const artworkInput = document.querySelector('#artwork-input').value;
+        fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${artworkInput}`)
+        .then(resp => resp.json())
+        .then(data => {
+            const objectArray = data.objectIDs;
+            const randomID = Math.floor(Math.random() * objectArray.length);
+            console.log(objectArray[randomID]);
+            displayArtwork(objectArray[randomID], artworkInput);
+        });
+
+    }
+
+
+
+
+
+});
+
+
 
 
 

@@ -11,7 +11,19 @@
     color: rgb(93, 116, 185);
 }
 
+.search-option-title {
+    color:rgb(93, 116, 185);
+}
+
 .search-option {
     float: left;
     padding: 3%;
 }
+
+#full-work {
+    margin-top: 20%;
+    margin-bottom:10%;
+    text-align: center;
+    color:rgb(63, 88, 165)
+}
+

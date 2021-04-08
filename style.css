@@ -54,3 +54,8 @@ img {
     font-size: 15px;
     color: black;
 }
+
+#credits {
+    margin: auto;
+    width: 80%;
+}

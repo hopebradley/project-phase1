@@ -25,7 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buildArtwork(data, keyword) {
-
+        if (artworkContainer.firstChild) {
+            console.log("I have a first child");
+            artworkContainer.removeChild(artworkContainer.firstChild);
+            console.log(artworkContainer.childNodes);
+        }
         const searchResults = document.createElement('div');
         const fullWork = document.createElement('div');
         const thisIsYourWord = document.createElement('p');
@@ -33,10 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const artist = document.createElement('h3');
         const medium = document.createElement('p');
         const picture = document.createElement('img');
-
-        if (artworkContainer.firstChild) {
-            artworkContainer.removeChild(artworkContainer.firstChild);
-        }
 
         let nameOrNo = "";
         data.artistDisplayName ? nameOrNo = `By ${data.artistDisplayName}` : nameOrNo = "Unknown Artist";
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
  ///////////////EVENT LISTENER RELATED STUFF
 
-    const searchByArtwork = document.querySelector('#search-by-artwork');
+    const searchByArtwork = document.querySelector('#search-by-keyword');
     // const chooseDepartment = document.querySelector('#choose-department');
 
     searchByArtwork.addEventListener('submit', titleSearch);
@@ -72,13 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function titleSearch(e) {
         e.preventDefault();
-        const artworkInput = document.querySelector('#artwork-input').value;
+        const artworkInput = document.querySelector('#keyword-input').value;
         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${artworkInput}`)
         .then(resp => resp.json())
         .then(data => {
             const objectArray = data.objectIDs;
             const randomID = Math.floor(Math.random() * objectArray.length);
             console.log(objectArray[randomID]);
+            console.log(artworkInput);
             displayArtwork(objectArray[randomID], artworkInput);
         });
 

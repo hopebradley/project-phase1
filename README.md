@@ -10,11 +10,11 @@ To install the project and see it in action, simply clone it onto your machine a
 
 <strong>Use:</strong>
 
-When ArtSearch loads, there is both a search bar and a drop down menu. Choose one OR the other; unfortunately, they don't work together. When a keyword is submitted or an option from the menu is chosen, a random artwork from an array of keyword-related artwork objects will be displayed below.
+When ArtSearch loads, there is both a search bar and a drop down menu. Choose one OR the other; unfortunately, they don't work together. When a keyword is submitted or an option from the menu is chosen, a random artwork from an array of keyword or department related artwork objects will be displayed below.
 <br>
-The first artwork you see is a random piece related to flowers, and if you search flowers again you will get a different artwork related to flowers. If you search a more specific word multiple times, unique results aren't guaranteed; there might just be one or two artworks that match the criteria!
+The first artwork you see upon loading the application is a random piece related to flowers, and if you search flowers again you will get a different artwork related to flowers. If you search a more specific word multiple times, unique results aren't guaranteed; there might just be one or two artworks that match the criteria!
 <br>
-Sometimes, it might seem like the displayed artwork is unrelated to the keyword. This is because the application searches ALL properties of the artwork for this keyword, not just the title. Your keyword may be found in the title, but it could also be found in the artist's name, the department name, the time period, the category, you name it. Therefore, although the art shown is always connected somehow to the keyword, it might not be obvious.
+Sometimes, it might seem like the displayed artwork is unrelated to the typed keyword. This is because the search-by-keyword feature searches ALL properties of the artwork for this keyword, not just the title. Your keyword may be found in the title, but it could also be found in the artist's name, the department name, the time period, the category, you name it. Therefore, although the art shown is always connected somehow to the keyword, it might not be obvious.
 
 <strong>Acknowledgments:</strong>
 

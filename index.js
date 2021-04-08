@@ -67,10 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
  ///////////////EVENT LISTENER RELATED STUFF
 
     const searchByArtwork = document.querySelector('#search-by-keyword');
-    // const chooseDepartment = document.querySelector('#choose-department');
+    const chooseDepartment = document.querySelector('#choose-category');
 
     searchByArtwork.addEventListener('submit', titleSearch);
-    console.log("Hi");
+    // console.log("Hi");
+
+    chooseDepartment.addEventListener('change', categorySearch);
 
     function titleSearch(e) {
         e.preventDefault();
@@ -80,10 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             const objectArray = data.objectIDs;
             const randomID = Math.floor(Math.random() * objectArray.length);
-            console.log(objectArray[randomID]);
-            console.log(artworkInput);
+            // console.log(objectArray[randomID]);
+            // console.log(artworkInput);
             displayArtwork(objectArray[randomID], artworkInput);
         });
+
+    }
+
+    function categorySearch(e) {
+        e.preventDefault();
+        console.log(e.target.value);
 
     }
 

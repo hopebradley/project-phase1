@@ -13,6 +13,16 @@
     color: rgb(93, 116, 185);
 }
 
+#title h1 {
+    margin: auto;
+    width: 50%;
+    margin-top: 15px;
+    background-color: white;
+    padding: 10px;
+    border: 3px solid rgb(93, 116, 185);
+    font-size: 50px;
+}
+
 #search-section {
     margin: auto;
     width: 90%;

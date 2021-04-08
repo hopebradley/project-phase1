@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => {
         const objectArray = data.objectIDs;
         const randomID = Math.floor(Math.random() * 100);
-        console.log(objectArray[randomID]);
+        // console.log(objectArray[randomID]);
         displayArtwork(objectArray[randomID], "flowers");
     });
 
@@ -19,16 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${artworkID}`)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             return buildArtwork(data, keyword);
         });
     }
 
     function buildArtwork(data, keyword) {
         if (artworkContainer.firstChild) {
-            console.log("I have a first child");
+            // console.log("I have a first child");
             artworkContainer.removeChild(artworkContainer.firstChild);
-            console.log(artworkContainer.childNodes);
+            // console.log(artworkContainer.childNodes);
         }
         const searchResults = document.createElement('div');
         const fullWork = document.createElement('div');
@@ -92,6 +92,20 @@ document.addEventListener('DOMContentLoaded', () => {
     function categorySearch(e) {
         e.preventDefault();
         console.log(e.target.value);
+        const artworkInput = e.target.value;
+        const departments = document.querySelectorAll('option');
+        const department = Array.from(departments).find(x => x.value = e.target.value);
+        const depID = department.id;
+        fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=${depID}&q=${artworkInput}`, { mode: 'no-cors' })
+        .then(resp => resp.json())
+        .then(data => {
+            const objectArray = data.objectIDs;
+            const randomID = Math.floor(Math.random() * objectArray.length);
+            // console.log(objectArray[randomID]);
+            // console.log(artworkInput);
+            displayArtwork(objectArray[randomID], artworkInput);
+        });
+
 
     }
 

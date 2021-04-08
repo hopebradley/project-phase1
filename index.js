@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const artist = document.createElement('h3');
         const medium = document.createElement('p');
         const picture = document.createElement('img');
+        const credits = document.createElement('p');
 
         let nameOrNo = "";
         data.artistDisplayName ? nameOrNo = `By ${data.artistDisplayName}` : nameOrNo = "Unknown Artist";
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         artist.innerHTML = nameOrNo;
         medium.innerHTML = "Medium: " + data.medium;
         picture.src = data.primaryImage;
+        credits.innerHTML = "All artwork is from the Metropolitan Museum of Art database."
 
         fullWork.id = "full-work";
         searchResults.id = "search-results";
@@ -57,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
         fullWork.appendChild(artist);
         fullWork.appendChild(medium);
         fullWork.appendChild(picture);
+        fullWork.appendChild(lineBreak);
+        fullWork.appendChild(credits);
         searchResults.appendChild(fullWork);
 
         artworkContainer.appendChild(searchResults);

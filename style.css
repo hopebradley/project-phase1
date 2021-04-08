@@ -2,6 +2,7 @@
     background-color:rgb(234, 239, 255);
     margin: auto;
     margin-top: 5%;
+    margin-bottom:5%;
     width: 70%;
     border: 3px solid #83afda;
     font-family: 'Lato', sans-serif
@@ -44,10 +45,11 @@
 }
 
 img {
-    width:50%;
+    width:40%;
 }
 
 #this-is-your-keyword {
+    text-align: center;
     font-size: 15px;
     color: black;
 }

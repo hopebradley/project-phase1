@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const searchResults = document.createElement('div');
         const fullWork = document.createElement('div');
+        const lineBreak = document.createElement('br');
         const thisIsYourWord = document.createElement('p');
         const title = document.createElement('h2');
         const artist = document.createElement('h3');
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let nameOrNo = "";
         data.artistDisplayName ? nameOrNo = `By ${data.artistDisplayName}` : nameOrNo = "Unknown Artist";
         
-        thisIsYourWord.innerHTML = `Here's a random artwork related to "${keyword}"!`;
+        thisIsYourWord.innerHTML = `Random artwork related to "${keyword}"!`;
         thisIsYourWord.id = "this-is-your-keyword";
         title.innerHTML = data.title;
         artist.innerHTML = nameOrNo;
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fullWork.id = "full-work";
         searchResults.id = "search-results";
+        searchResults.appendChild(lineBreak);
         searchResults.appendChild(thisIsYourWord);
         fullWork.appendChild(title);
         fullWork.appendChild(artist);

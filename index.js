@@ -91,17 +91,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function categorySearch(e) {
         e.preventDefault();
-        console.log(e.target.value);
         const artworkInput = e.target.value;
-        const departments = document.querySelectorAll('option');
-        const department = Array.from(departments).find(x => x.value = e.target.value);
-        const depID = department.id;
-        fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=${depID}&q=${artworkInput}`, { mode: 'no-cors' })
+        const selected = e.target.options[e.target.selectedIndex]; 
+        console.log(selected);
+        const department = selected.value;
+        const depID = selected.id;
+        console.log(department.id);
+        fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=${depID}&q=e`)
         .then(resp => resp.json())
         .then(data => {
             const objectArray = data.objectIDs;
             const randomID = Math.floor(Math.random() * objectArray.length);
-            // console.log(objectArray[randomID]);
+            console.log(objectArray[randomID]);
             // console.log(artworkInput);
             displayArtwork(objectArray[randomID], artworkInput);
         });

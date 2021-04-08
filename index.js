@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const searchResults = document.createElement('div');
         const fullWork = document.createElement('div');
-        const lineBreak = document.createElement('br');
+        // const lineBreak = document.createElement('br');
         const thisIsYourWord = document.createElement('p');
         const title = document.createElement('h2');
         const artist = document.createElement('h3');
@@ -53,13 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fullWork.id = "full-work";
         searchResults.id = "search-results";
-        searchResults.appendChild(lineBreak);
+        searchResults.appendChild(document.createElement('br'));
         searchResults.appendChild(thisIsYourWord);
         fullWork.appendChild(title);
         fullWork.appendChild(artist);
         fullWork.appendChild(medium);
         fullWork.appendChild(picture);
-        fullWork.appendChild(lineBreak);
+        fullWork.appendChild(document.createElement('br'));
         fullWork.appendChild(credits);
         searchResults.appendChild(fullWork);
 

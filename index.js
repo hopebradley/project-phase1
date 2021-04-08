@@ -3,36 +3,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let artworkContainer = document.querySelector('#artwork-container');
    
-    //UPON LOAD
+////UPON PAGE LOAD, DO THIS
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=flowers`)
     .then(resp => resp.json())
     .then(data => {
         const objectArray = data.objectIDs;
         const randomID = Math.floor(Math.random() * 100);
-        // console.log(objectArray[randomID]);
         displayArtwork(objectArray[randomID], 'Current keyword: flowers!');
     });
 
 
-    /////USED FOR LOADING ART
+////FUNCTIONS
+
+////fetches a specific artwork using its ID and calls buildArtwork on the artwork's data, displaying the correct work on the page
     function displayArtwork(artworkID, message) {
         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${artworkID}`)
         .then(resp => resp.json())
         .then(data => {
-            // console.log(data);
             return buildArtwork(data, message);
         });
     }
-
+////creates the visual 'card' with the artwork's information and credits and appends this card to the existing container
+////if there's already an artwork in the container, it removes it so that only one at a time is displayed
     function buildArtwork(data, message) {
         if (artworkContainer.firstChild) {
-            // console.log("I have a first child");
             artworkContainer.removeChild(artworkContainer.firstChild);
-            // console.log(artworkContainer.childNodes);
         }
         const searchResults = document.createElement('div');
         const fullWork = document.createElement('div');
-        // const lineBreak = document.createElement('br');
         const thisIsYourWord = document.createElement('p');
         const title = document.createElement('h2');
         const artist = document.createElement('h3');
@@ -55,29 +53,30 @@ document.addEventListener('DOMContentLoaded', () => {
         searchResults.id = "search-results";
         searchResults.appendChild(document.createElement('br'));
         searchResults.appendChild(thisIsYourWord);
+
         fullWork.appendChild(title);
         fullWork.appendChild(artist);
         fullWork.appendChild(medium);
         fullWork.appendChild(picture);
         fullWork.appendChild(document.createElement('br'));
         fullWork.appendChild(credits);
+
         searchResults.appendChild(fullWork);
 
         artworkContainer.appendChild(searchResults);
     }
-    //////////////////////
 
 
- ///////////////EVENT LISTENER RELATED STUFF
+////EVENT LISTENER RELATED STUFF:
 
     const searchByArtwork = document.querySelector('#search-by-keyword');
     const chooseDepartment = document.querySelector('#choose-category');
 
+////adds event listeners to both search methods:
     searchByArtwork.addEventListener('submit', titleSearch);
-    // console.log("Hi");
-
     chooseDepartment.addEventListener('change', categorySearch);
 
+////performs the keyword search:
     function titleSearch(e) {
         e.preventDefault();
         const artworkInput = document.querySelector('#keyword-input').value;
@@ -86,34 +85,24 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             const objectArray = data.objectIDs;
             const randomID = Math.floor(Math.random() * objectArray.length);
-            // console.log(objectArray[randomID]);
-            // console.log(artworkInput);
             displayArtwork(objectArray[randomID], `Current keyword: ${artworkInput}!`);
         });
 
     }
-
+////performs the drop-down menu search:
     function categorySearch(e) {
         e.preventDefault();
-        const artworkInput = e.target.value;
         const selected = e.target.options[e.target.selectedIndex]; 
-        // console.log(selected);
         const department = selected.value;
         const depID = selected.id;
-        // console.log(department.id);
         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&departmentId=${depID}&q=e`)
         .then(resp => resp.json())
         .then(data => {
             const objectArray = data.objectIDs;
             const randomID = Math.floor(Math.random() * objectArray.length);
-            // console.log(objectArray[randomID]);
-            // console.log(artworkInput);
             displayArtwork(objectArray[randomID], `Current department: ${department}!`);
         });
-
-
     }
-
 
 
 

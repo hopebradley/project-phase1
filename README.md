@@ -36,4 +36,4 @@ Email: hope.e.bradley@gmail.com
 <br>
 LinkedIn: https://www.linkedin.com/in/hopebradl3y/
 <br>
-Blog: hopebradley.com
+Blog: <a href="https://hopebradley.com">hopebradley.com</a>

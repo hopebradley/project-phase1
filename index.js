@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function buildArtwork(data, keyword) {
 
+        const searchResults = document.createElement('div');
         const fullWork = document.createElement('div');
         const thisIsYourWord = document.createElement('p');
         const title = document.createElement('h2');
@@ -48,13 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
         picture.src = data.primaryImage;
 
         fullWork.id = "full-work";
-        fullWork.appendChild(thisIsYourWord);
+        searchResults.id = "search-results";
+        searchResults.appendChild(thisIsYourWord);
         fullWork.appendChild(title);
         fullWork.appendChild(artist);
         fullWork.appendChild(medium);
         fullWork.appendChild(picture);
+        searchResults.appendChild(fullWork);
 
-        artworkContainer.appendChild(fullWork);
+        artworkContainer.appendChild(searchResults);
     }
     //////////////////////
 

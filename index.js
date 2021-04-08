@@ -10,21 +10,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const objectArray = data.objectIDs;
         const randomID = Math.floor(Math.random() * 100);
         // console.log(objectArray[randomID]);
-        displayArtwork(objectArray[randomID], "flowers");
+        displayArtwork(objectArray[randomID], 'Current keyword: flowers!');
     });
 
 
     /////USED FOR LOADING ART
-    function displayArtwork(artworkID, keyword) {
+    function displayArtwork(artworkID, message) {
         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${artworkID}`)
         .then(resp => resp.json())
         .then(data => {
             // console.log(data);
-            return buildArtwork(data, keyword);
+            return buildArtwork(data, message);
         });
     }
 
-    function buildArtwork(data, keyword) {
+    function buildArtwork(data, message) {
         if (artworkContainer.firstChild) {
             // console.log("I have a first child");
             artworkContainer.removeChild(artworkContainer.firstChild);
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let nameOrNo = "";
         data.artistDisplayName ? nameOrNo = `By ${data.artistDisplayName}` : nameOrNo = "Unknown Artist";
         
-        thisIsYourWord.innerHTML = `Random artwork related to "${keyword}"!`;
+        thisIsYourWord.innerHTML = message;
         thisIsYourWord.id = "this-is-your-keyword";
         title.innerHTML = data.title;
         artist.innerHTML = nameOrNo;
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const randomID = Math.floor(Math.random() * objectArray.length);
             // console.log(objectArray[randomID]);
             // console.log(artworkInput);
-            displayArtwork(objectArray[randomID], artworkInput);
+            displayArtwork(objectArray[randomID], `Current keyword: ${artworkInput}!`);
         });
 
     }
@@ -93,18 +93,18 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const artworkInput = e.target.value;
         const selected = e.target.options[e.target.selectedIndex]; 
-        console.log(selected);
+        // console.log(selected);
         const department = selected.value;
         const depID = selected.id;
-        console.log(department.id);
-        fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=${depID}&q=e`)
+        // console.log(department.id);
+        fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&departmentId=${depID}&q=e`)
         .then(resp => resp.json())
         .then(data => {
             const objectArray = data.objectIDs;
             const randomID = Math.floor(Math.random() * objectArray.length);
-            console.log(objectArray[randomID]);
+            // console.log(objectArray[randomID]);
             // console.log(artworkInput);
-            displayArtwork(objectArray[randomID], artworkInput);
+            displayArtwork(objectArray[randomID], `Current department: ${department}!`);
         });
 
 

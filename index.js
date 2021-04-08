@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data.artistDisplayName ? nameOrNo = `By ${data.artistDisplayName}` : nameOrNo = "Unknown Artist";
         
         thisIsYourWord.innerHTML = `Here's a random artwork related to "${keyword}"!`;
+        thisIsYourWord.id = "this-is-your-keyword";
         title.innerHTML = data.title;
         artist.innerHTML = nameOrNo;
         medium.innerHTML = data.medium;

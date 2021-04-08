@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         thisIsYourWord.id = "this-is-your-keyword";
         title.innerHTML = data.title;
         artist.innerHTML = nameOrNo;
-        medium.innerHTML = data.medium;
+        medium.innerHTML = "Medium: " + data.medium;
         picture.src = data.primaryImage;
 
         fullWork.id = "full-work";

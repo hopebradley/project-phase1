@@ -1,6 +1,7 @@
 #project-body {
     background-color:rgb(234, 239, 255);
     margin: auto;
+    margin-top: 5%;
     width: 70%;
     border: 3px solid #83afda;
     font-family: 'Lato', sans-serif
@@ -11,13 +12,18 @@
     color: rgb(93, 116, 185);
 }
 
+#search-section {
+    margin: auto;
+    width: 90%;
+}
+
 .search-option-title {
     color:rgb(93, 116, 185);
 }
 
 .search-option {
     float: left;
-    padding: 3%;
+    padding: 4%
 }
 
 #search-results {
@@ -34,11 +40,11 @@
     margin-bottom:20px;
     padding:10px;
     padding-bottom: 25px;
-    background-color:#F5FAFF;
+    background-color:#FAFCFF;
 }
 
 img {
-    width:30%;
+    width:50%;
 }
 
 #this-is-your-keyword {
